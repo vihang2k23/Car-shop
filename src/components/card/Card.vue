@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid m-0 p-0">
-    <v-row  v-for="data in data" :key="data">
-        <v-col cols="6">
-            <v-card class="mx-auto my-12" max-width="374">
+   <v-row>
+    <v-col v-for="data,index in data" :key="index">
+        <v-card class="mx-auto my-12" max-width="374"  >
       <v-img height="250" src="../../assets/Honda/Honda-CRV-0.jpeg"></v-img>
 
       <v-card-title class="d-flex justify-content-center">
@@ -10,11 +10,13 @@
       </v-card-title>
 
       <h5 class="ml-5">
-        $ 250000 <span>|</span><span> Petrol</span>
+        {{ data.price }} <span>|</span><span> {{ data.fuel }}</span>
 
-        <v-btn color="deep-purple lighten-2" text>
+       <router-link :to="`/cardetails/${data.name}/${data.id }`">
+        <v-btn color="deep-purple lighten-2"  text>
           <v-card-title class="">All Details </v-card-title>
         </v-btn>
+       </router-link>
       </h5>
 
       <v-divider></v-divider>
@@ -26,8 +28,12 @@
         <v-btn color="cyan lighten-5 lighten-2"> Delete Details </v-btn>
       </v-card-actions>
     </v-card>
-        </v-col>
-    </v-row>
+
+    </v-col>
+   </v-row>
+    
+    
+    
   </div>
 </template>
 <script>
@@ -36,8 +42,6 @@ export default {
   props: {
     data: Array,
   },
-  mounted() {
-    console.log(this.data);
-  },
+ 
 };
 </script>

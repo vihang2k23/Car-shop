@@ -27,7 +27,7 @@
   </v-card> -->
 <div v-if='this.$route.params.category == "Honda"'>
    <div v-for="data in cars.Honda" :key="data.length">
-    {{ data }}
+   
     <Card  :data= cars.Honda />
    </div>
 
