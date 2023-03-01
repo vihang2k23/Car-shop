@@ -1,0 +1,19 @@
+{
+    "Honda":[{
+        "id": 1 ,
+        "name" : "Honda",
+        "modal" : "Honda CRV",
+        "price" :"25,000.00",
+        "mainImage":"Honda-CRV-0.jpeg",
+        "images":["Honda-CRV-0.jpeg","Honda-CRV-0.jpeg","Honda-CRV-0.jpeg"],
+        "description": "",
+        "uploadedOn": "12/12/2021",
+        "year":2018, 
+        "fuel":"Petrol"
+    }],
+    "Toyota":[],
+    "Chevrolet":[],
+   "Tata":[],
+   "Ford":[]
+
+}
