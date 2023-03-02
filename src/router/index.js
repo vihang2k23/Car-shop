@@ -18,22 +18,34 @@ const routes = [
   {
     path:"/carsview/:category",
     name:"carsview",
-    component: CarsView
+    component: CarsView,
+    meta: {
+      auth: true
+  }
   },
   {
     path: '/cardetails/:category/:id',
     name: 'cardetails',
-    component: CarDetails
+    component: CarDetails,
+    meta: {
+      auth: true
+  }
   },
   {
     path: '/addcardetails/:category',
     name: 'addcardetails',
-    component: AddCarDetails
+    component: AddCarDetails,
+    meta: {
+      auth: true
+  }
   },
   {
     path: '/editcardetails/:category/:id',
     name: 'editcardetails',
-    component: EditCarDetails
+    component: EditCarDetails,
+    meta: {
+      auth: true
+  } 
   }
   // {
   //   path: '/about',

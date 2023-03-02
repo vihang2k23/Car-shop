@@ -7,7 +7,7 @@
       >
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
   
-        <v-toolbar-title>Car-Shop</v-toolbar-title>
+       <router-link to="/"> <v-toolbar-title>Car-Shop</v-toolbar-title> </router-link>
   
         <!-- <v-spacer></v-spacer> -->
         <v-menu
@@ -48,7 +48,10 @@
             <v-icon >mdi-car</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
+           <!-- <router-link class="text-decoration-none " :to="{ name: 'carsview', params: { category : item.carName }}"> <v-list-item-title class="text-dark">{{ item.carName }}</v-list-item-title></router-link> -->
            <router-link class="text-decoration-none " :to="`/carsview/${item.carName}`"> <v-list-item-title class="text-dark">{{ item.carName }}</v-list-item-title></router-link>
+              <!-- <v-list-item-title @click="redirect(item.carName)"  class="text-dark">{{ item.carName }}</v-list-item-title> -->
+            
           </v-list-item-content>
         </v-list-item>
       </v-list-item-group>
@@ -68,6 +71,15 @@ export default {
       selectedItem: 1,
       items:json,
     }),
+    methods:{
+redirect(data){
+  this.$router.push({
+        name: "carsview", //use name for router push
+        params: { data }
+      });
+},
+
+    },
     mounted(){
     console.log(json);
     }
