@@ -5,8 +5,8 @@
         "modal" : "Honda CRV",
         "price" :"25,000.00",
         "mainImage":"Honda-CRV-0.jpeg",
-        "images":["Honda-CRV-0.jpeg","Honda-CRV-0.jpeg","Honda-CRV-0.jpeg"],
-        "description": "",
+        "images":["Honda-CRV-0.jpeg","Honda-CITY-0.jpeg","Honda-CRV-0.jpeg"],
+        "description": "The Honda CR-V had a cult following in India. It was the ultimate Honda for our country as it offered a blend of an SUV-like stance and ground clearance, yet was very car-like to drive",
         "uploadedOn": "12/12/2021",
         "year":2018, 
         "fuel":"Petrol"
@@ -55,9 +55,86 @@
         "year":2018, 
         "fuel":"Petrol"
     }],
-    "Toyota":[],
-    "Chevrolet":[],
-   "Tata":[],
-   "Ford":[]
+    "Toyota":[{
+        "id": 2 ,
+        "name" : "Honda",
+        "modal" : "Honda CITY",
+        "price" :"5,000,00.00",
+        "mainImage":"Honda-CITY-0.jpeg",
+        "images":["Honda-CITY-0.jpeg","Honda-CITY-0.jpeg","Honda-CITY-0.jpeg"],
+        "description": "",
+        "uploadedOn": "12/12/2010",
+        "year":2016, 
+        "fuel":"Petrol"
+    },{
+        "id": 1 ,
+        "name" : "Honda",
+        "modal" : "Honda CRV",
+        "price" :"25,000.00",
+        "mainImage":"Honda-CRV-0.jpeg",
+        "images":["Honda-CRV-0.jpeg","Honda-CITY-0.jpeg","Honda-CRV-0.jpeg"],
+        "description": "The Honda CR-V had a cult following in India. It was the ultimate Honda for our country as it offered a blend of an SUV-like stance and ground clearance, yet was very car-like to drive",
+        "uploadedOn": "12/12/2021",
+        "year":2018, 
+        "fuel":"Petrol"
+    },{
+        "id": 2 ,
+        "name" : "Honda",
+        "modal" : "Honda CITY",
+        "price" :"5,000,00.00",
+        "mainImage":"Honda-CITY-0.jpeg",
+        "images":["Honda-CITY-0.jpeg","Honda-CITY-0.jpeg","Honda-CITY-0.jpeg"],
+        "description": "",
+        "uploadedOn": "12/12/2010",
+        "year":2016, 
+        "fuel":"Petrol"
+    }],
+    "Chevrolet":[{
+        "id": 1 ,
+        "name" : "Honda",
+        "modal" : "Honda CRV",
+        "price" :"25,000.00",
+        "mainImage":"Honda-CRV-0.jpeg",
+        "images":["Honda-CRV-0.jpeg","Honda-CITY-0.jpeg","Honda-CRV-0.jpeg"],
+        "description": "The Honda CR-V had a cult following in India. It was the ultimate Honda for our country as it offered a blend of an SUV-like stance and ground clearance, yet was very car-like to drive",
+        "uploadedOn": "12/12/2021",
+        "year":2018, 
+        "fuel":"Petrol"
+    }],
+   "Tata":[{
+    "id": 1 ,
+    "name" : "Honda",
+    "modal" : "Honda CRV",
+    "price" :"25,000.00",
+    "mainImage":"Honda-CRV-0.jpeg",
+    "images":["Honda-CRV-0.jpeg","Honda-CITY-0.jpeg","Honda-CRV-0.jpeg"],
+    "description": "The Honda CR-V had a cult following in India. It was the ultimate Honda for our country as it offered a blend of an SUV-like stance and ground clearance, yet was very car-like to drive",
+    "uploadedOn": "12/12/2021",
+    "year":2018, 
+    "fuel":"Petrol"
+}],
+   "Ford":[{
+    "id": 1 ,
+    "name" : "Honda",
+    "modal" : "Honda CRV",
+    "price" :"25,000.00",
+    "mainImage":"Honda-CRV-0.jpeg",
+    "images":["Honda-CRV-0.jpeg","Honda-CITY-0.jpeg","Honda-CRV-0.jpeg"],
+    "description": "The Honda CR-V had a cult following in India. It was the ultimate Honda for our country as it offered a blend of an SUV-like stance and ground clearance, yet was very car-like to drive",
+    "uploadedOn": "12/12/2021",
+    "year":2018, 
+    "fuel":"Petrol"
+},{
+    "id": 2 ,
+    "name" : "Honda",
+    "modal" : "Honda CITY",
+    "price" :"5,000,00.00",
+    "mainImage":"Honda-CITY-0.jpeg",
+    "images":["Honda-CITY-0.jpeg","Honda-CITY-0.jpeg","Honda-CITY-0.jpeg"],
+    "description": "",
+    "uploadedOn": "12/12/2010",
+    "year":2016, 
+    "fuel":"Petrol"
+}]
 
 }

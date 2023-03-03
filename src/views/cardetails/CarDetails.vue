@@ -1,30 +1,70 @@
 <template>
-    <div class="justify-content-evenly row">
-         <div class="col-8" v-for="data in getCarInfo " :key="data.id" >
+    <div class="containe-fluid m-0 p-0">
+        <div class="justify-content-evenly row" v-for="data in getCarInfo " :key="data.id" >
+         <div class="col-8"  >
             <div >
-                <img :src="getImageUrl(data.name,data.mainImage)" alt="" class="rounded mx-auto d-block  mainImage">
+                <img 
+                v-if="mainImage.length < 1 ?  mainImage = getImageUrl(data.name,data.mainImage) : mainImage"
+                :src="mainImage" 
+                alt="" class="rounded mx-auto d-block  w-50 h-50">
              
             </div>
         
-            <div class="justify-content-center row"  v-for="(eachCarImage,i) in data.images" :key="i" >
+            <div class="justify-content-center row mt-5"  >
            
-                <img :src="getImageUrl(data.name,eachCarImage)" alt="" class="rounded mx-auto d-block  h-50 w-50 thumbnailImage">
+                <img  v-for="(eachCarImage,i) in data.images" :key="i"
+                 :src="getImageUrl(data.name,eachCarImage)" alt=""
+                  @click="mainImage=getImageUrl(data.name,eachCarImage)" 
+                  class="rounded mx-auto d-block  thumbnailImage">
              
 
             </div>
              
          </div>
-         <div class="col-4"></div>
+         <div class="col-4">
+            <template>
+  <v-card
+    class="mx-auto"
+    color="#26c6da"
+    dark
+    max-width="400"
+  >
+    <v-card-title class="text-h5 font-weight-bold text-white">
+      {{ data.name }} | &nbsp;
+      <span >{{ data.modal }}</span>
+    </v-card-title>
+    <v-card-text class="text-h5 font-weight-bold">
+    {{ data.price }} | &nbsp;
+    <span> {{ data.fuel }}</span>
+    </v-card-text>
+    
+
+    <v-card-text class="text-h5 font-weight-bold">
+  Model Year :  {{ data.year }} 
+ 
+    </v-card-text >
+    <v-card-text class="text-h5 font-weight-bold">
+       Uploaded On : {{ data.uploadedOn }}
+    </v-card-text>
+    <v-card-text class="text-h6 font-weight-bold">
+  <span class="text-white">Details</span>: {{ data.description }} 
+    </v-card-text>
+  </v-card>
+</template>
+         </div>
+    </div>
+
     </div>
 </template>
 <script>
+// getImageUrl(data.name,data.mainImage)
 import cardetails from "../../json/cars_details.json"
 export default{
     name:"CarDetails",
    data(){
     return {
     myCarDetails:cardetails,
-    
+    mainImage:""
         // carName :this.$route.params.category,
         // carFiled:this.$route.params.id
 }

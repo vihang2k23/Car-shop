@@ -7,7 +7,7 @@
       >
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
   
-       <router-link to="/"> <v-toolbar-title>Car-Shop</v-toolbar-title> </router-link>
+       <router-link to="/" class="text-decoration-none text-white"> <v-toolbar-title>Car-Shop</v-toolbar-title> </router-link>
   
         <!-- <v-spacer></v-spacer> -->
         <v-menu
