@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid m-0 p-0">
     <v-row class="row-gutters m-0 p-0">
-      <v-col  v-for="(data, index) in data" :key="index">
+      <v-col  v-for="(data, index) in car" :key="index">
      
         <v-card class="mx-auto my-12" max-width="374">
           <v-img height="250" :src="getImageUrl(data.name,data.mainImage)"></v-img>
@@ -26,7 +26,7 @@
             <v-btn color="teal accent-2 lighten-2" class="d-flex space-between">
               Edit Details
             </v-btn>
-            <v-btn color="cyan lighten-5 lighten-2"> Delete Details </v-btn>
+            <v-btn color="cyan lighten-5 lighten-2" @click="deletecar(data)"> Delete Details </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -34,11 +34,17 @@
   </div>
 </template>
 <script>
+// import axios from "axios"
+import car_data from "../../json/cars_details.json"
 export default {
   name: "Card-data",
   props: {
     data: Array,
   },
+  data(){
+    return {
+      car: this.data
+  }},
   methods:{
     redirect(data){
   this.$router.push({
@@ -53,6 +59,44 @@ export default {
 getImageUrl(folderName,imageName){
 let image = require.context("@/assets/");
 return image("./" + folderName + "/" + imageName)
+}, deletecar(data)
+{
+  car_data.Honda = car_data.Honda.filter((data1)=> {return data1.id!==data.id})
+console.log( car_data.Honda,);
+  // switch(data.name){
+  //           case "Honda" :
+  //           car_data.Honda   = car_data.Honda.filter((data1)=>{
+  //                   return   data1.id !== data.id
+  //               }) 
+  //               console.log( car_data.Honda);
+  //               break;
+  //               case "Toyota" :
+  //               car_data.Toyota = car_data.Toyota.filter((data1)=>{
+  //                   return   data1.id !== data.id
+  //               }) 
+  //                     console.log( car_data.Toyota);
+  //                   break;
+  //                   case "Chevrolet" :
+  //                   car_data.Chevrolet  =  car_data.Chevrolet.filter((data1)=>{
+  //                   return   data1.id !== data.id
+  //               }) 
+  //                         console.log(  car_data.Chevrolet );
+  //                       break;
+  //                       case "Ford" :
+  //                       car_data.Ford  =car_data.Ford.filter((data1)=>{
+  //                   return   data1.id !== data.id
+  //               }) 
+  //                             console.log( car_data.Ford);
+  //                           break;
+  //                        case "Tata" :
+  //                        car_data.Tata  = car_data.Tata.filter((data1)=>{
+  //                   return   data1.id !== data.id
+  //               }) 
+  //                             console.log( car_data.Tata);
+  //                           break;
+  //                           default :
+  //                           car_data 
+  //       }
 }
   },
   mounted() {

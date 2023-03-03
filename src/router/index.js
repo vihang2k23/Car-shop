@@ -32,7 +32,7 @@ const routes = [
   }
   },
   {
-    path: '/addcardetails/:category',
+    path: '/addcardetails',
     name: 'addcardetails',
     component: AddCarDetails,
     meta: {
@@ -40,7 +40,8 @@ const routes = [
   }
   },
   {
-    path: '/editcardetails/:category/:id',
+    path: '/editcardetails/',
+    // path: '/editcardetails/:category/:id',
     name: 'editcardetails',
     component: EditCarDetails,
     meta: {

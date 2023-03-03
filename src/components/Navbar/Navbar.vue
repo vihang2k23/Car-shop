@@ -64,7 +64,7 @@
     </div>
   </template>
   <script>
- import json from '../json/cars.json'
+ import json from '../../json/cars.json'
 export default {
     name:"NavBar",
     data: () => ({
