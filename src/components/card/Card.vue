@@ -10,11 +10,11 @@
             <span>{{ data.year }}</span> &nbsp; {{ data.modal }}
           </v-card-title>
 
-          <h5 class="ml-4">
+          <h5 class="ml-3">
             {{ data.price }} <span>|</span><span> {{ data.fuel }}</span>
 
-            <router-link :to="{path:`/cardetails/${data.name}/${data.id}`,params:{data:data}}"> <v-btn color="deep-purple lighten-2" text >
-                <v-card-title class="">All Details </v-card-title>
+            <router-link :to="{path:`/cardetails/${data.name}/${data.id}`,params:{data:data}}" class="text-decoration-none"> <v-btn color="deep-purple lighten-2" text >
+                <v-card-title >All Details </v-card-title>
               </v-btn></router-link>
              
            
