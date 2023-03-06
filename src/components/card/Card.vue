@@ -40,6 +40,7 @@ export default {
   name: "Card-data",
   props: {
     data: Array,
+    search : String
   },
   data(){
     return {
@@ -100,7 +101,7 @@ console.log( car_data.Honda,);
 }
   },
   mounted() {
-    console.log(this.data);
+    console.log(this.search);
   },
 };
 </script>

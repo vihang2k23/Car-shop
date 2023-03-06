@@ -39,8 +39,8 @@
                 </v-img>
                 <v-card-title
                   class="bg-white justify-content-center"
-                  v-text="card.title"
-                ></v-card-title>
+                
+                >{{ card.title }}</v-card-title>
               
               </v-card>
             </router-link>

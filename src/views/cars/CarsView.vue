@@ -1,30 +1,38 @@
 <template>
     <v-main>
-
+      <v-card-title>
+          <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="Search"
+            single-line
+            hide-details
+          ></v-text-field>
+        </v-card-title>
 
 <div v-if='this.$route.params.category == "Honda"'>
    <div>
 
-    <Card  :data= cars.Honda />
+    <Card  :data= cars.Honda  :search=search />
    </div>
 
 
 </div>
 <div v-else-if='this.$route.params.category == "Toyota"'>
-    <div>Toyoto</div>
+    
     <Card  :data= cars.Toyota />
 
 </div>
 <div v-else-if='this.$route.params.category == "Chevrolet"'>
-    <div>Chevrolet</div>
+
     <Card  :data= cars.Chevrolet />
 </div>
 <div v-else-if='this.$route.params.category== "Tata"'>
-    <div>Tata</div>
+ 
     <Card  :data= cars.Tata />
 </div>
 <div v-else-if='this.$route.params.category== "Ford"'>
-    <div>Ford</div>
+
     <Card  :data= cars.Ford />
 </div>
 <div v-else>
@@ -46,9 +54,12 @@ export default {
   return {
     cars: cars,
     route_data: null ,
-    
+    search:""
+
   }
  },
+ 
+ 
  created() {
     this.route_data =
       console.log('the local product is ', )
