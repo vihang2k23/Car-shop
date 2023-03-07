@@ -48,34 +48,34 @@
           </v-card-text>
 
           <v-card-text class="text-h5 font-weight-bold">
-            Model Year : {{ data.year }}
+            Model Year : {{ data.year }} 
           </v-card-text>
           <v-card-text class="text-h5 font-weight-bold">
             Uploaded On : {{ data.uploadedOn }}
           </v-card-text>
           <v-card-text class="text-h6 font-weight-bold">
-            <span class="text-white">Details</span>: {{ data.description }}
+            <span class="text-white">Details {{ this.data1 }}</span>: {{ data.description }}
           </v-card-text>
         </v-card>
       </div>
     </div>
    
-      <Footer class="mt-5"></Footer>
 
   </div>
 </template>
 <script>
 // getImageUrl(data.name,data.mainImage)
-import Footer from "@/components/Footer/Footer.vue";
+// import bus from "../../main.js"
 import cardetails from "../../json/cars_details.json";
 export default {
   components:{
-    Footer
+
   },
     name: "CarDetails",
     data() {
         return {
             myCarDetails: cardetails,
+            data1 : "",
             mainImage: "",
             // carName :this.$route.params.category,
             // carFiled:this.$route.params.id
@@ -95,7 +95,7 @@ export default {
                     carData = this.myCarDetails.Honda.filter((data) => {
                         return data.id == this.$route.params.id;
                     });
-                    console.log(carData);
+                    // console.log(carData);
                     break;
                 case "Toyota":
                     carData = this.myCarDetails.Toyota.filter((data) => {
@@ -124,8 +124,17 @@ export default {
         },
     },
     mounted() {
-        this.$route;
-    },
+      
+        this.$on('send', data => {
+            console.log(data,"datat")
+           
+            this.data1 = data
+           
+        })    
+        console.log(this.data1,"dtataaaaaaaaa");
+    } 
+
+ 
   
 };
 </script>

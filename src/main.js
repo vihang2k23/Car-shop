@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "normalize.css";
 import vuetify from './plugins/vuetify'
 Vue.config.productionTip = false
-
+export const bus = new Vue()
 new Vue({
   router,
   store,

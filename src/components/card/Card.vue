@@ -16,17 +16,18 @@
           <h5 class="ml-3">
             {{ data.price }} <span>|</span><span> {{ data.fuel }}</span>
 
-            <router-link
+            <!-- <router-link
               :to="{
                 path: `/cardetails/${data.name}/${data.id}`,
                 params: { data: data },
               }"
               class="text-decoration-none"
-            >
-              <v-btn color="deep-purple lighten-2" text>
+            > -->
+              <v-btn color="deep-purple lighten-2" text @click="sendMsg(data)" >
                 <v-card-title>All Details </v-card-title>
-              </v-btn></router-link
-            >
+              </v-btn>
+              <!-- </router-link> -->
+     
           </h5>
 
           <v-divider></v-divider>
@@ -47,6 +48,7 @@
 </template>
 <script>
 // import axios from "axios"
+// import bus from "../../main.js"
 import car_data from "../../json/cars_details.json";
 export default {
   name: "Card-data",
@@ -62,13 +64,19 @@ export default {
     };
   },
   methods: {
-    redirect(data) {
-      this.$router.push({
-        name: "cardetails",
-        path: `/cardetails/${data.name}/${data.id}`,
-        params: { data },
-      });
-    },
+    // redirect(data) {
+    //   this.$router.push({
+    //     name: "cardetails",
+    //     path: `/cardetails/${data.name}/${data.id}`,
+    //     params: { data },
+    //   });
+    // },
+  
+            sendMsg(data) {
+                this.$emit('send', 'hello Component B') 
+                this.$router.push(`/cardetails/${data.name}/${data.id}`)
+            }
+  ,
     getImageUrl(folderName, imageName) {
       let image = require.context("@/assets/");
       return image("./" + folderName + "/" + imageName);
