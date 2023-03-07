@@ -8,7 +8,7 @@
         "images":["Honda-CRV-0.jpeg","Honda-CRV-1.jpeg","Honda-CRV-2.jpeg"],
         "description": "The Honda CR-V had a cult following in India. It was the ultimate Honda for our country as it offered a blend of an SUV-like stance and ground clearance, yet was very car-like to drive",
         "uploadedOn": "12/12/2021",
-        "year":2018, 
+        "year":2007, 
         "fuel":"Petrol"
     },{
         "id": 2 ,
@@ -30,7 +30,19 @@
         "images":["Honda-JAZZ-0.jpeg","Honda-JAZZ-1.jpeg","Honda-JAZZ-2.jpeg"],
         "description": "Honda Jazz is a 5 seater hatchback car available at a price range of Rs. 8.01 Lakh to 10.32 Lakh in India. It is available in 6 variants and 5 colours.",
         "uploadedOn": "12/12/2021",
-        "year":2018, 
+        "year":2021, 
+        "fuel":"Petrol"
+    },
+    {
+        "id": 3 ,
+        "name" : "Honda",
+        "modal" : "Honda JAQQ",
+        "price" :"8,25,000.00",
+        "mainImage":"Honda-JAZZ-0.jpeg",
+        "images":["Honda-JAZZ-0.jpeg","Honda-JAZZ-1.jpeg","Honda-JAZZ-2.jpeg"],
+        "description": "Honda Jazz is a 5 seater hatchback car available at a price range of Rs. 8.01 Lakh to 10.32 Lakh in India. It is available in 6 variants and 5 colours.",
+        "uploadedOn": "12/12/2021",
+        "year":2021, 
         "fuel":"Petrol"
     }],
 

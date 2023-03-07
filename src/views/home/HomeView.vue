@@ -49,15 +49,15 @@
       </v-container>
     </v-card>
 
-    <FooterVue />
+  
   </div>
 </template>
 <script>
-import FooterVue from "@/components/Footer/Footer.vue";
+
 
 export default {
   components: {
-    FooterVue,
+
   },
   data: () => ({
     cards: [
