@@ -8,7 +8,9 @@ import AddCarDetails from "../views/addcardetails/AddCarDetails.vue"
 import EditCarDetails from "../views/editdetails/EditCarDetails.vue"
 import Login from "../views/login/Login.vue"
 import NotFound from "../views/error/NotFoundPage.vue"
-
+import Forget from "../views/forgetpage/ForgetPage.vue"
+import OtpPage from "../views/otppage/OtpPage.vue"
+import SetPassWord from "../views/setpasswordpage/SetPassPage.vue"
 Vue.use(VueRouter)
 
 const routes = [
@@ -54,20 +56,39 @@ const routes = [
     path:'/login',
     name:"login",
     component: Login,
+   
+  },
+  {
+    path:'/signup',
+    name:'signup',
+    component:Signup,
     meta: {
       auth: true
   } 
   },
   {
-    path:'/signup',
-    name:'signup',
-    component:Signup
+    path:'/forget',
+    name:'forget',
+    component:Forget,
+   
+  },
+  {
+    path:'/otppage',
+    name:"otppage",
+    component:OtpPage,
+     
+  },
+  {
+    path:"/setpassword",
+    name:"setpassword",
+    component:SetPassWord,
   },
 {
   path:'/*',
   name:"error",
   component:NotFound
-}
+},
+
 ]
 
 const router = new VueRouter({

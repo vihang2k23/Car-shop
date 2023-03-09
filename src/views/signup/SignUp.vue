@@ -6,7 +6,7 @@
                <v-flex xs12 sm8 md4>
                   <v-card class="elevation-12">
                      <v-toolbar dark color="primary">
-                        <v-toolbar-title>Login form</v-toolbar-title>
+                        <v-toolbar-title>Sign-Up Page </v-toolbar-title>
                      </v-toolbar>
                      <v-card-text>
                         <v-form>
@@ -53,7 +53,7 @@
                         </v-form>
                      </v-card-text>
                      <v-card-actions>
-                       
+                        <v-btn   color="primary" @click="alert()">Sign up</v-btn>
                         <v-spacer></v-spacer>
                         Already have an account?
                         <v-btn  text color="primary" to="/login">Login</v-btn>
@@ -68,9 +68,21 @@
 </template>
 
 <script>
+  import Swal from 'sweetalert2'
 export default {
    name: 'SignUp',
- 
+   methods:{
+    alert(){
+   Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: "Sign-up Successfully",
+  showConfirmButton: false,
+  timer: 1500
+})
+this.$router.push("/login")
+    }
+  }
 };
 </script>
 
