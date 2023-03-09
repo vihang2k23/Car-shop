@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid m-0 p-0">
     <v-row class="row-gutters m-0 p-0">
-     
-      <v-col cols="auto" v-for="(data, index) in data_filter" :key="index">
+      <!-- data_filter is method use for filtering data and display in card design  -->
+      <v-col  cols="auto" v-for="(data, index) in data_filter" :key="index">
         <v-card class="mx-auto my-12" max-width="374">
           <v-img
             height="250"
@@ -13,75 +13,80 @@
             <span>{{ data.year }}</span> &nbsp; {{ data.modal }}
           </v-card-title>
 
-          <h5 class="ml-3">
+          <h5 class="ml-2">
             {{ data.price }} <span>|</span><span> {{ data.fuel }}</span>
 
-            <!-- <router-link
-              :to="{
-                path: `/cardetails/${data.name}/${data.id}`,
-                params: { data: data },
-              }"
-              class="text-decoration-none"
-            > -->
-              <v-btn color="deep-purple lighten-2" text @click="sendMsg(data)" >
-                <v-card-title>All Details </v-card-title>
-              </v-btn>
-              <!-- </router-link> -->
-     
+            <v-btn
+              color="deep-purple lighten-2"
+              text
+              @click="redirectdetails(data)"
+            >
+              <v-card-title>All Details </v-card-title>
+            </v-btn>
           </h5>
 
           <v-divider></v-divider>
 
           <v-card-actions class="space-between d-flex">
-            <v-btn color="teal accent-2 lighten-2" class="d-flex space-between">
-           
-              Edit Details
-            </v-btn>
+            <router-link class="text-decoration-none" :to="`/editcardetails/${data.name}/${data.id}`"
+              ><v-btn
+                color="teal accent-2 lighten-2 mr-sm-3"
+                class="d-flex space-between"
+              >
+                Edit Details
+              </v-btn></router-link
+            >
             <v-btn color="cyan lighten-5 lighten-2" @click="deletecar(data)">
               Delete Details
             </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
+      
     </v-row>
   </div>
 </template>
 <script>
+{
+  /* <router-link
+              :to="{
+                path: `/cardetails/${data.name}/${data.id}`,
+                params: { data: data },
+              }"
+              class="text-decoration-none"
+            >
+         
+              </router-link>  */
+}
 // import axios from "axios"
 // import bus from "../../main.js"
 import car_data from "../../json/cars_details.json";
 export default {
   name: "Card-data",
   props: {
+    // filter data according to modal
     data: Array,
+    
     data1: String,
     year: String,
   },
   data() {
     return {
       car: this.data,
-      search_data: this.data1,
     };
   },
   methods: {
-    // redirect(data) {
-    //   this.$router.push({
-    //     name: "cardetails",
-    //     path: `/cardetails/${data.name}/${data.id}`,
-    //     params: { data },
-    //   });
-    // },
-  
-            sendMsg(data) {
-                this.$emit('send', 'hello Component B') 
-                this.$router.push(`/cardetails/${data.name}/${data.id}`)
-            }
-  ,
+    // To redirected to Car alldetails page
+    redirectdetails(data) {
+      this.$emit("send", "hello Component B");
+      this.$router.push(`/cardetails/${data.name}/${data.id}`);
+    },
+    // For get image path
     getImageUrl(folderName, imageName) {
       let image = require.context("@/assets/");
       return image("./" + folderName + "/" + imageName);
     },
-
+    // For delete car card
     deletecar(data) {
       car_data.Honda = car_data.Honda.filter((data1) => {
         return data1.id !== data.id;
@@ -124,32 +129,48 @@ export default {
     },
   },
   computed: {
+    //data_filter is method use for filtering data and display in card design
     data_filter() {
-      console.log(this.data1,"1232");
+      console.log(this.data1, "1232");
       return this.car.filter((data) => {
-        if (!this.year && this.data1) {
+        if (!this.year && this.data1 !== "") {
+          console.log("called 1")
           return data.modal.match(this.data1);
-        } else if (this.year >= 0) {
-          if(this.data1 !==  " "){
+        }  else if (this.data1 === "" && this.year >= 0) {
+          console.log("called 3")
+    
+         
+              if (this.year == 2000) {
+                return data.year >= 2000 && data.year <= 2009;
+              }
+              if (this.year == 2010) {
+                return data.year >= 2010 && data.year <= 2019;
+              }
+              if (this.year == 2020) {
+                return data.year >= 2020;
+              }
+     
+        }else if (this.year >= 0  ) {
+          console.log("called 2")
+          if (this.data1 !== " ") {
+            console.log("called 2/1")
             return data.modal.match(this.data1);
-          }else{
+          } else {
+            console.log("called 2/2")
             if (this.year == 2000) {
-            return data.year >= 2000 && data.year <= 2009;
-          }
-          if (this.year == 2010) {
-            return data.year >= 2010 && data.year <= 2019;
-          }
-          if (this.year == 2020) {
-            return data.year >= 2020;
-          }
+              return data.year >= 2000 && data.year <= 2009;
+            }
+            if (this.year == 2010) {
+              return data.year >= 2010 && data.year <= 2019;
+            }
+            if (this.year == 2020) {
+              return data.year >= 2020;
+            }
           }
         }
         
       });
     },
-  },mounted(){
-    console.log("mounted",this.data);
-  }
- 
+  },
 };
 </script>

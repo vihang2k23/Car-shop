@@ -1,11 +1,11 @@
 <template>
-  <div class="container-fluid m-0 p-0 "  id="container" >
+  <div class="container-fluid m-0 p-0" id="container">
     <div
       class="justify-content-evenly row"
       v-for="data in getCarInfo"
       :key="data.id"
     >
-      <div class="col-8" >
+      <div class="col-8">
         <div>
           <img
             v-if="
@@ -48,19 +48,17 @@
           </v-card-text>
 
           <v-card-text class="text-h5 font-weight-bold">
-            Model Year : {{ data.year }} 
+            Model Year : {{ data.year }}
           </v-card-text>
           <v-card-text class="text-h5 font-weight-bold">
             Uploaded On : {{ data.uploadedOn }}
           </v-card-text>
           <v-card-text class="text-h6 font-weight-bold">
-            <span class="text-white">Details {{ this.data1 }}</span>: {{ data.description }}
+            <span class="text-white">Details </span>: {{ data.description }}
           </v-card-text>
         </v-card>
       </div>
     </div>
-   
-
   </div>
 </template>
 <script>
@@ -68,74 +66,61 @@
 // import bus from "../../main.js"
 import cardetails from "../../json/cars_details.json";
 export default {
-  components:{
+  components: {},
+  name: "CarDetails",
+  data() {
+    return {
+      myCarDetails: cardetails,
 
+      mainImage: "",
+      // carName :this.$route.params.category,
+      // carFiled:this.$route.params.id
+    };
   },
-    name: "CarDetails",
-    data() {
-        return {
-            myCarDetails: cardetails,
-            data1 : "",
-            mainImage: "",
-            // carName :this.$route.params.category,
-            // carFiled:this.$route.params.id
-        };
+  methods: {
+    getImageUrl(folderName, imageName) {
+      let image = require.context("@/assets/");
+      return image("./" + folderName + "/" + imageName);
     },
-    methods: {
-        getImageUrl(folderName, imageName) {
-            let image = require.context("@/assets/");
-            return image("./" + folderName + "/" + imageName);
-        },
+  },
+  computed: {
+    // For car details
+    getCarInfo() {
+      let carData = "";
+      switch (this.$route.params.category) {
+        case "Honda":
+          carData = this.myCarDetails.Honda.filter((data) => {
+            return data.id == this.$route.params.id;
+          });
+          // console.log(carData);
+          break;
+        case "Toyota":
+          carData = this.myCarDetails.Toyota.filter((data) => {
+            return data.id == this.$route.params.id;
+          });
+          break;
+        case "Chevrolet":
+          carData = this.myCarDetails.Chevrolet.filter((data) => {
+            return data.id == this.$route.params.id;
+          });
+          break;
+        case "Ford":
+          carData = this.myCarDetails.Ford.filter((data) => {
+            return data.id == this.$route.params.id;
+          });
+          break;
+        case "Tata":
+          carData = this.myCarDetails.Tata.filter((data) => {
+            return data.id == this.$route.params.id;
+          });
+          break;
+        default:
+          carData = this.myCarDetails;
+      }
+      return carData;
     },
-    computed: {
-        getCarInfo() {
-            let carData = "";
-            switch (this.$route.params.category) {
-                case "Honda":
-                    carData = this.myCarDetails.Honda.filter((data) => {
-                        return data.id == this.$route.params.id;
-                    });
-                    // console.log(carData);
-                    break;
-                case "Toyota":
-                    carData = this.myCarDetails.Toyota.filter((data) => {
-                        return data.id == this.$route.params.id;
-                    });
-                    break;
-                case "Chevrolet":
-                    carData = this.myCarDetails.Chevrolet.filter((data) => {
-                        return data.id == this.$route.params.id;
-                    });
-                    break;
-                case "Ford":
-                    carData = this.myCarDetails.Ford.filter((data) => {
-                        return data.id == this.$route.params.id;
-                    });
-                    break;
-                case "Tata":
-                    carData = this.myCarDetails.Tata.filter((data) => {
-                        return data.id == this.$route.params.id;
-                    });
-                    break;
-                default:
-                    carData = this.myCarDetails;
-            }
-            return carData;
-        },
-    },
-    mounted() {
-      
-        this.$on('send', data => {
-            console.log(data,"datat")
-           
-            this.data1 = data
-           
-        })    
-        console.log(this.data1,"dtataaaaaaaaa");
-    } 
-
+  },
  
-  
 };
 </script>
 
@@ -150,5 +135,4 @@ export default {
   width: 200px;
   border: 10px solid #eee;
 }
-
 </style>

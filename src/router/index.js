@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Signup from "../views/signup/SignUp.vue"
 import HomeView from '../views/home/HomeView.vue'
 import CarsView from "../views/cars/CarsView.vue"
 import CarDetails from "../views/cardetails/CarDetails.vue"
 import AddCarDetails from "../views/addcardetails/AddCarDetails.vue"
 import EditCarDetails from "../views/editdetails/EditCarDetails.vue"
+import Login from "../views/login/Login.vue"
+import NotFound from "../views/error/NotFoundPage.vue"
 
 Vue.use(VueRouter)
 
@@ -40,22 +43,31 @@ const routes = [
   }
   },
   {
-    path: '/editcardetails/',
-    // path: '/editcardetails/:category/:id',
+    path: '/editcardetails/:category/:id',
     name: 'editcardetails',
     component: EditCarDetails,
     meta: {
       auth: true
   } 
-  }
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  // }
+  },
+  {
+    path:'/login',
+    name:"login",
+    component: Login,
+    meta: {
+      auth: true
+  } 
+  },
+  {
+    path:'/signup',
+    name:'signup',
+    component:Signup
+  },
+{
+  path:'/*',
+  name:"error",
+  component:NotFound
+}
 ]
 
 const router = new VueRouter({
