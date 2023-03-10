@@ -6,11 +6,22 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "normalize.css";
 import vuetify from './plugins/vuetify'
+import "../src/vee-validate/vee-validate"
+// import Vue from 'vue';
+export const eventBus = new Vue(); 
+import { ValidationProvider,ValidationObserver } from 'vee-validate';
 Vue.config.productionTip = false
+Vue.component('ValidationProvider', ValidationProvider);
+Vue.component('ValidationObserver',ValidationObserver)
 
+export const bus = new Vue()
 new Vue({
-  router,
+  
+
   store,
   vuetify,
-  render: h => h(App)
+  render: h => h(App),
+  router,
+  
+
 }).$mount('#app')

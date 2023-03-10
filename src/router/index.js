@@ -1,11 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Signup from "../views/signup/SignUp.vue"
 import HomeView from '../views/home/HomeView.vue'
-import CarsView from "../views/cars/CarsView.vue"
-import CarDetails from "../views/cardetails/CarDetails.vue"
-import AddCarDetails from "../views/addcardetails/AddCarDetails.vue"
-import EditCarDetails from "../views/editdetails/EditCarDetails.vue"
+import Categories from "../views/cars/Categories.vue"
+import CarDetail from "../views/cardetail/CarDetail.vue"
 
+import Login from "../views/login/Login.vue"
+import NotFound from "../views/error/NotFoundPage.vue"
+import Forget from "../views/forgetpage/ForgetPage.vue"
+import OtpPage from "../views/otppage/OtpPage.vue"
+import ResetPassword from "../views/resetpage/ResetPage.vue"
 Vue.use(VueRouter)
 
 const routes = [
@@ -16,33 +20,61 @@ const routes = [
     component: HomeView
   },
   {
-    path:"/carsview/:category",
-    name:"carsview",
-    component: CarsView
-  },
-  {
-    path: '/cardetails/:category/:id',
-    name: 'cardetails',
-    component: CarDetails
-  },
-  {
-    path: '/addcardetails/:category',
-    name: 'addcardetails',
-    component: AddCarDetails
-  },
-  {
-    path: '/editcardetails/:category/:id',
-    name: 'editcardetails',
-    component: EditCarDetails
+    path:"/categories/:category",
+    name:"categories",
+    component: Categories,
+    meta: {
+      auth: true
   }
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  // }
+  },
+  {
+    path: '/cardetail/:category/:id',
+    name: 'cardetail',
+    component: CarDetail,
+    meta: {
+      auth: true
+  }
+  },
+  
+ 
+
+  {
+    path:'/login',
+    name:"login",
+    component: Login,
+   
+  },
+  {
+    path:'/signup',
+    name:'signup',
+    component:Signup,
+    meta: {
+      auth: true
+  } 
+  },
+  {
+    path:'/forget',
+    name:'forget',
+    component:Forget,
+   
+  },
+  {
+    path:'/otp',
+    name:"otp",
+    component:OtpPage,
+     
+  },
+  {
+    path:"/reset",
+    name:"reset",
+    component:ResetPassword,
+  },
+{
+  path:'/*',
+  name:"error",
+  component:NotFound
+},
+
 ]
 
 const router = new VueRouter({
