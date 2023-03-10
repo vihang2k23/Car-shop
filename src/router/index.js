@@ -2,15 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Signup from "../views/signup/SignUp.vue"
 import HomeView from '../views/home/HomeView.vue'
-import CarsView from "../views/cars/CarsView.vue"
-import CarDetails from "../views/cardetails/CarDetails.vue"
-import AddCarDetails from "../views/addcardetails/AddCarDetails.vue"
-import EditCarDetails from "../views/editdetails/EditCarDetails.vue"
+import Categories from "../views/cars/Categories.vue"
+import CarDetail from "../views/cardetail/CarDetail.vue"
+
 import Login from "../views/login/Login.vue"
 import NotFound from "../views/error/NotFoundPage.vue"
 import Forget from "../views/forgetpage/ForgetPage.vue"
 import OtpPage from "../views/otppage/OtpPage.vue"
-import SetPassWord from "../views/setpasswordpage/SetPassPage.vue"
+import ResetPassword from "../views/resetpage/ResetPage.vue"
 Vue.use(VueRouter)
 
 const routes = [
@@ -21,37 +20,24 @@ const routes = [
     component: HomeView
   },
   {
-    path:"/carsview/:category",
-    name:"carsview",
-    component: CarsView,
+    path:"/categories/:category",
+    name:"categories",
+    component: Categories,
     meta: {
       auth: true
   }
   },
   {
-    path: '/cardetails/:category/:id',
-    name: 'cardetails',
-    component: CarDetails,
+    path: '/cardetail/:category/:id',
+    name: 'cardetail',
+    component: CarDetail,
     meta: {
       auth: true
   }
   },
-  {
-    path: '/addcardetails',
-    name: 'addcardetails',
-    component: AddCarDetails,
-    meta: {
-      auth: true
-  }
-  },
-  {
-    path: '/editcardetails/:category/:id',
-    name: 'editcardetails',
-    component: EditCarDetails,
-    meta: {
-      auth: true
-  } 
-  },
+  
+ 
+
   {
     path:'/login',
     name:"login",
@@ -73,15 +59,15 @@ const routes = [
    
   },
   {
-    path:'/otppage',
-    name:"otppage",
+    path:'/otp',
+    name:"otp",
     component:OtpPage,
      
   },
   {
-    path:"/setpassword",
-    name:"setpassword",
-    component:SetPassWord,
+    path:"/reset",
+    name:"reset",
+    component:ResetPassword,
   },
 {
   path:'/*',

@@ -7,7 +7,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "normalize.css";
 import vuetify from './plugins/vuetify'
 import "../src/vee-validate/vee-validate"
-
+// import Vue from 'vue';
+export const eventBus = new Vue(); 
 import { ValidationProvider,ValidationObserver } from 'vee-validate';
 Vue.config.productionTip = false
 Vue.component('ValidationProvider', ValidationProvider);

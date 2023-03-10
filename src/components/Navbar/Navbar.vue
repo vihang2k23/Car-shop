@@ -56,7 +56,7 @@ export default {
 
     // To redirected to particular brand cars page
     redirect(data) {
-      this.$router.push(`/carsview/${data}`);
+      this.$router.push(`/categories/${data}`);
       this.$router.go(this.$router.currentRoute);
       console.log("click");
     },

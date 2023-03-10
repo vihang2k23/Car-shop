@@ -15,31 +15,21 @@
 
           <h5 class="ml-2">
             {{ data.price }} <span>|</span><span> {{ data.fuel }}</span>
-
+            <!-- this.$router.push() -->
+      
             <v-btn
               color="deep-purple lighten-2"
               text
-              @click="redirectdetails(data)"
+            
             >
-              <v-card-title>All Details </v-card-title>
+              <v-card-title @click="redirectdetails(data)">All Details </v-card-title>
             </v-btn>
+      
           </h5>
 
           <v-divider></v-divider>
 
-          <v-card-actions class="space-between d-flex">
-            <router-link class="text-decoration-none" :to="`/editcardetails/${data.name}/${data.id}`"
-              ><v-btn
-                color="teal accent-2 lighten-2 mr-sm-3"
-                class="d-flex space-between"
-              >
-                Edit Details
-              </v-btn></router-link
-            >
-            <v-btn color="cyan lighten-5 lighten-2" @click="deletecar(data)">
-              Delete Details
-            </v-btn>
-          </v-card-actions>
+          
         </v-card>
       </v-col>
       
@@ -47,20 +37,11 @@
   </div>
 </template>
 <script>
-{
-  /* <router-link
-              :to="{
-                path: `/cardetails/${data.name}/${data.id}`,
-                params: { data: data },
-              }"
-              class="text-decoration-none"
-            >
-         
-              </router-link>  */
-}
-// import axios from "axios"
-// import bus from "../../main.js"
-import car_data from "../../json/cars_details.json";
+
+
+
+import { EventBus } from '@/event-bus';
+
 export default {
   name: "Card-data",
   props: {
@@ -73,71 +54,34 @@ export default {
   data() {
     return {
       car: this.data,
+      emit:"hello"
     };
   },
   methods: {
     // To redirected to Car alldetails page
     redirectdetails(data) {
-      this.$emit("send", "hello Component B");
-      this.$router.push(`/cardetails/${data.name}/${data.id}`);
+      // console.log("callleddddddd",this.car);
+      EventBus.$emit('search-value',this.car)
+     this.$router.push(`/cardetail/${data.name}/${data.id}`)
     },
     // For get image path
     getImageUrl(folderName, imageName) {
       let image = require.context("@/assets/");
       return image("./" + folderName + "/" + imageName);
     },
-    // For delete car card
-    deletecar(data) {
-      car_data.Honda = car_data.Honda.filter((data1) => {
-        return data1.id !== data.id;
-      });
-      console.log(car_data.Honda);
-      // switch(data.name){
-      //           case "Honda" :
-      //           car_data.Honda   = car_data.Honda.filter((data1)=>{
-      //                   return   data1.id !== data.id
-      //               })
-      //               console.log( car_data.Honda);
-      //               break;
-      //               case "Toyota" :
-      //               car_data.Toyota = car_data.Toyota.filter((data1)=>{
-      //                   return   data1.id !== data.id
-      //               })
-      //                     console.log( car_data.Toyota);
-      //                   break;
-      //                   case "Chevrolet" :
-      //                   car_data.Chevrolet  =  car_data.Chevrolet.filter((data1)=>{
-      //                   return   data1.id !== data.id
-      //               })
-      //                         console.log(  car_data.Chevrolet );
-      //                       break;
-      //                       case "Ford" :
-      //                       car_data.Ford  =car_data.Ford.filter((data1)=>{
-      //                   return   data1.id !== data.id
-      //               })
-      //                             console.log( car_data.Ford);
-      //                           break;
-      //                        case "Tata" :
-      //                        car_data.Tata  = car_data.Tata.filter((data1)=>{
-      //                   return   data1.id !== data.id
-      //               })
-      //                             console.log( car_data.Tata);
-      //                           break;
-      //                           default :
-      //                           car_data
-      //       }
-    },
+    
+
   },
   computed: {
     //data_filter is method use for filtering data and display in card design
     data_filter() {
-      console.log(this.data1, "1232");
+      // console.log(this.data1, "1232");
       return this.car.filter((data) => {
         if (!this.year && this.data1 !== "") {
-          console.log("called 1")
+          // console.log("called 1")
           return data.modal.match(this.data1);
         }  else if (this.data1 === "" && this.year >= 0) {
-          console.log("called 3")
+          // console.log("called 3")
     
          
               if (this.year == 2000) {
@@ -151,12 +95,12 @@ export default {
               }
      
         }else if (this.year >= 0  ) {
-          console.log("called 2")
+          // console.log("called 2")
           if (this.data1 !== " ") {
-            console.log("called 2/1")
+            // console.log("called 2/1")
             return data.modal.match(this.data1);
           } else {
-            console.log("called 2/2")
+            // console.log("called 2/2")
             if (this.year == 2000) {
               return data.year >= 2000 && data.year <= 2009;
             }

@@ -21,11 +21,11 @@
       <h3 class="text-white d-flex justify-content-center">POPULAR BRANDS</h3>
       <hr class="text-white" />
       <v-container fluid>
-        <v-row dense>
-          <v-col v-for="card in cards" :key="card.title" :cols="card.flex">
+        <v-row >
+          <v-col style="margin-left: 150px;" v-for="card in cards" :key="card.title" :cols="card.flex">
             <router-link
-              :to="`/carsview/${card.title}`"
-              class="text-decoration-none"
+              :to="`/categories/${card.title}`"
+              class="text-decoration-none "
             >
               <v-card height="70%" width="70%">
                 <v-img
@@ -63,31 +63,31 @@ export default {
     cards: [
       {
         title: "Honda",
-        flex: 4,
+        flex: 3,
         folderName: "Car_models",
         image_name: "Honda.png",
       },
       {
         title: "Toyota",
-        flex: 4,
+        flex: 3,
         folderName: "Car_models",
         image_name: "toyota.png",
       },
       {
         title: "Chevrolet",
-        flex: 4,
+        flex: 3,
         folderName: "Car_models",
         image_name: "Chevrolet.png",
       },
       {
         title: "Tata",
-        flex: 4,
+        flex: 3,
         folderName: "Car_models",
         image_name: "Tata.png",
       },
       {
         title: "Ford",
-        flex: 4,
+        flex: 3,
         folderName: "Car_models",
         image_name: "Ford.png",
       },

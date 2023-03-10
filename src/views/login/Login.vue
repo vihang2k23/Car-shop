@@ -16,7 +16,9 @@
                            <span>{{ errors[0] }}</span>
                            </ValidationProvider>
                            <ValidationProvider rules="required|min:8" v-slot="{ errors }">
-                           <v-text-field id="password" prepend-icon="mdi-lock" name="password" v-model.lazy="login_data.login_pass" label="Password"
+                           <v-text-field id="password" prepend-icon="mdi-lock" v-if="!login_data.login_pass" name="password" v-model.lazy="login_data.login_pass" label="Password"
+                              type="password"></v-text-field>
+                              <v-text-field id="password" prepend-icon="mdi-lock" v-else name="password" v-model.lazy="login_data.login_pass" label="Password"
                               type="password"></v-text-field>
                               <p>{{ errors[0] }}</p>
                            </ValidationProvider>

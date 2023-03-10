@@ -56,7 +56,7 @@ export default {
                timer: 1500
             })
             console.log(this.forget_email, "forget_email");
-            this.$router.push("/otppage")
+            this.$router.push("/otp")
          }
       }
    }

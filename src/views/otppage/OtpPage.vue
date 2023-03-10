@@ -58,7 +58,7 @@ export default{
   showConfirmButton: false,
   timer: 1500
 })
-this.$router.push("/setpassword")
+this.$router.push("/reset")
             
             
           }else{

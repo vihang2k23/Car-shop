@@ -1,5 +1,5 @@
 import { extend, localize } from "vee-validate";
-import { min, required, email,between, confirmed} from "vee-validate/dist/rules";
+import { min, required, email,between, confirmed,numeric, alpha,max} from "vee-validate/dist/rules";
 import en from "vee-validate/dist/locale/en.json";
 
 // Install rules
@@ -10,8 +10,9 @@ extend("email",{ ...email,message:'Please enter vaild E-mail'});
 extend('between',between)
 extend("confirmed",{...confirmed,message:'Password Does not matched'})
 // extend("confirmed", email);
-
-
+extend("alpha",{...alpha,message:"Please enter only alphabet"})
+extend("numeric",{...numeric,message:"Please enter numerical Value"})
+extend("max",max)
 // Install messages
 localize({
   en
